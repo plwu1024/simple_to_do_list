@@ -37,7 +37,7 @@ class TaskAdapter(
         holder.descriptionTextView.text = task.description
         holder.createdDateTextView.text = simpleDateFormat.format(task.createDate)
         holder.dueDateTextView.text = simpleDateFormat.format(task.dueDate)
-        holder.locationTextView.text = "${task.location.longitude}, ${task.location.altitude}"
+        holder.locationTextView.text = "${task.location.longitude} | ${task.location.altitude}"
     }
 
     override fun getItemCount(): Int {
