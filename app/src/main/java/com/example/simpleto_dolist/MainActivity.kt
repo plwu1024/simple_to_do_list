@@ -1,7 +1,6 @@
 package com.example.simpleto_dolist
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
@@ -24,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         ).allowMainThreadQueries().build()
 
         val taskDao = db.taskDao()
-        val dataset = taskDao.getAll()
+        var dataset = taskDao.getAll()
 
         val tasksRecyclerView = findViewById<RecyclerView>(R.id.tasks_recycler_view)
         tasksRecyclerView.adapter = TaskAdapter(this, dataset)
@@ -34,5 +33,20 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(it.context, AddTaskActivity::class.java)
             it.context.startActivity(intent)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val db = Room.databaseBuilder(
+            applicationContext,
+            TaskDatabase::class.java,
+            "task"
+        ).allowMainThreadQueries().build()
+
+        val taskDao = db.taskDao()
+        var dataset = taskDao.getAll()
+
+        val tasksRecyclerView = findViewById<RecyclerView>(R.id.tasks_recycler_view)
+        tasksRecyclerView.adapter = TaskAdapter(this, dataset)
     }
 }
