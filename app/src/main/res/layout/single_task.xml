@@ -20,21 +20,24 @@
             android:text="@string/default_task_title"
             android:textSize="20sp"
             app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-            app:layout_constraintStart_toEndOf="@+id/button_check"
+            app:layout_constraintStart_toEndOf="@+id/button_delete"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/task_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/default_task_description"
             android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/linearLayout"
-            app:layout_constraintStart_toEndOf="@+id/button_check"
-            app:layout_constraintTop_toBottomOf="@+id/task_title" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button_delete"
+            app:layout_constraintTop_toBottomOf="@+id/location_icon" />
 
         <TextView
             android:id="@+id/task_location"
@@ -54,7 +57,9 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:orientation="vertical"
+            android:paddingBottom="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -62,18 +67,17 @@
                 android:id="@+id/due_date_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                tools:layout_marginStart="8dp">
+                android:layout_marginBottom="8dp">
 
                 <TextView
                     android:id="@+id/task_due_date"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:text="@string/default_task_due_date"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/button_due_date" />
+                    app:layout_constraintEnd_toStartOf="@+id/button_due_date"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/due_date_caption"
@@ -100,10 +104,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/created_date_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp">
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:id="@+id/created_date_caption"
@@ -111,6 +112,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/created_date_caption"
                     android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/task_created_date"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -122,7 +124,7 @@
                     android:text="@string/default_task_created_date"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/button_created_date"
-                    app:layout_constraintTop_toBottomOf="@+id/created_date_caption" />
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <ImageView
                     android:id="@+id/button_created_date"
@@ -139,37 +141,25 @@
         </LinearLayout>
 
         <ImageButton
-            android:id="@+id/button_check"
-            android:layout_width="36dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_baseline_check_24" />
-
-        <ImageButton
             android:id="@+id/button_delete"
             android:layout_width="36dp"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
             android:adjustViewBounds="false"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_baseline_delete_outline_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/location_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button_check"
-            app:layout_constraintTop_toBottomOf="@+id/task_description"
+            app:layout_constraintStart_toEndOf="@+id/button_delete"
+            app:layout_constraintTop_toBottomOf="@+id/task_title"
             app:srcCompat="@drawable/ic_baseline_location_on_24"
             tools:importantForAccessibility="no" />
 

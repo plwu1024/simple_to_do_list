@@ -8,18 +8,30 @@ import java.util.*
 val defaultTasks = mutableListOf<Task>(
     Task("task1", "description", Date(), Date(), Location(LocationManager.FUSED_PROVIDER)),
     Task("task2", "description", Date(), Date(), Location(LocationManager.FUSED_PROVIDER)),
+    Task("task3", "description", Date(), Date(), Location(LocationManager.FUSED_PROVIDER)),
+    Task("task1", "description", Date(), Date(), Location(LocationManager.FUSED_PROVIDER)),
+    Task("task2", "description", Date(), Date(), Location(LocationManager.FUSED_PROVIDER)),
+    Task("task3", "description", Date(), Date(), Location(LocationManager.FUSED_PROVIDER)),
+    Task("task1", "description", Date(), Date(), Location(LocationManager.FUSED_PROVIDER)),
+    Task("task2", "description", Date(), Date(), Location(LocationManager.FUSED_PROVIDER)),
+    Task("task3", "description", Date(), Date(), Location(LocationManager.FUSED_PROVIDER)),
+    Task("task1", "description", Date(), Date(), Location(LocationManager.FUSED_PROVIDER)),
+    Task("task2", "description", Date(), Date(), Location(LocationManager.FUSED_PROVIDER)),
     Task("task3", "description", Date(), Date(), Location(LocationManager.FUSED_PROVIDER))
 )
 
 class TaskDataSource() {
     private val tasks: MutableList<Task> = mutableListOf()
+
     init {
         tasks.addAll(defaultTasks)
     }
+
     fun loadTasks(): MutableList<Task> {
         return tasks
     }
-    fun addTask(task: Task){
+
+    fun addTask(task: Task) {
         tasks.add(task)
     }
 }

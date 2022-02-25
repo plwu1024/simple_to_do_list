@@ -9,16 +9,19 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.simpleto_dolist.R
 import com.example.simpleto_dolist.model.Task
+import java.text.SimpleDateFormat
 
 class TaskAdapter(
     private val context: Context,
     private val dataset: MutableList<Task>
 ): RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
+    private val simpleDateFormat: SimpleDateFormat = SimpleDateFormat("yyyy/MM/dd")
+
     class TaskViewHolder(private val view: View): RecyclerView.ViewHolder(view){
         val titleTextView: TextView = view.findViewById(R.id.task_title)
         val descriptionTextView: TextView = view.findViewById((R.id.task_description))
-        val createdDate: EditText = view.findViewById(R.id.task_created_date)
-        val dueDateEditText: EditText = view.findViewById(R.id.task_due_date)
+        val createdDateTextView: TextView = view.findViewById(R.id.task_created_date)
+        val dueDateTextView: TextView = view.findViewById(R.id.task_due_date)
         val locationTextView: TextView = view.findViewById(R.id.task_location)
     }
 
@@ -32,8 +35,9 @@ class TaskAdapter(
         val task = dataset[position]
         holder.titleTextView.text = task.title
         holder.descriptionTextView.text = task.description
-//        holder.createdDate.text = task.createDate.
-
+        holder.createdDateTextView.text = simpleDateFormat.format(task.createDate)
+        holder.dueDateTextView.text = simpleDateFormat.format(task.dueDate)
+        holder.locationTextView.text = "${task.location.longitude}, ${task.location.altitude}"
     }
 
     override fun getItemCount(): Int {
