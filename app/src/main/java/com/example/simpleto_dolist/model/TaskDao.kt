@@ -14,6 +14,9 @@ interface TaskDao {
     @Query("SELECT * FROM Tasks ORDER BY dueDate DESC")
     fun getAll(): List<Task>
 
+    @Query("SELECT * FROM Tasks WHERE id LIKE :id")
+    fun getById(id: Int): Task
+
     @Delete
     fun delete(item: Task)
 

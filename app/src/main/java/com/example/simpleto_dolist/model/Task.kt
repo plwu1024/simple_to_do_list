@@ -9,7 +9,7 @@ data class Task(
     var title: String,
     var description: String,
     var dueDate: String,
-    val createDate: String,
+    val createdDate: String,
     val location: String,
     @PrimaryKey(autoGenerate = true) var id: Int = 0
 )

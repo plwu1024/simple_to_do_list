@@ -5,23 +5,22 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.example.simpleto_dolist.MainActivity
 import com.example.simpleto_dolist.R
+import com.example.simpleto_dolist.UpdateTaskActivity
 import com.example.simpleto_dolist.data.TaskDatabase
 import com.example.simpleto_dolist.model.Task
+import com.google.android.material.card.MaterialCardView
 import java.text.SimpleDateFormat
 
 class TaskAdapter(
     private val context: Context,
     private val dataset: List<Task>
 ): RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
-    private val simpleDateFormat: SimpleDateFormat = SimpleDateFormat("yyyy/MM/dd")
     private val db = Room.databaseBuilder(
         context,
         TaskDatabase::class.java,
@@ -37,6 +36,7 @@ class TaskAdapter(
         val dueDateTextView: TextView = view.findViewById(R.id.task_due_date)
         val locationTextView: TextView = view.findViewById(R.id.task_location)
         val deleteButton: ImageButton = view.findViewById(R.id.button_delete)
+        val card: MaterialCardView = view.findViewById(R.id.task_card)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
@@ -49,12 +49,17 @@ class TaskAdapter(
         val task = dataset[position]
         holder.titleTextView.text = task.title
         holder.descriptionTextView.text = task.description
-        holder.createdDateTextView.text = task.createDate
+        holder.createdDateTextView.text = task.createdDate
         holder.dueDateTextView.text = task.dueDate
         holder.locationTextView.text = task.location
         holder.deleteButton.setOnClickListener {
             taskDao.delete(task)
             context.startActivity(Intent(it.context, MainActivity::class.java))
+        }
+        holder.card.setOnClickListener {
+            val intent = Intent(it.context, UpdateTaskActivity::class.java)
+            intent.putExtra("id", task.id)
+            context.startActivity(intent)
         }
     }
 
