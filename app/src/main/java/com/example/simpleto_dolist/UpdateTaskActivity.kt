@@ -12,7 +12,6 @@ import com.example.simpleto_dolist.model.Task
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputLayout
 import java.text.SimpleDateFormat
-import java.util.*
 
 class UpdateTaskActivity: AppCompatActivity() {
     private val simpleDateFormat: SimpleDateFormat = SimpleDateFormat("yyyy/MM/dd")
