@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Simple To-Do List</string>
+    <string name="default_task_title">Sample To-Do Task</string>
+    <string name="default_task_description">This is a sample to-do task.\nThis is a sample to-do task.\nThis is a sample to-do task.</string>
+    <string name="default_task_created_date">2022/1/1</string>
+    <string name="default_task_due_date">2022/02/25</string>
+    <string name="default_task_location">Location here</string>
+    <string name="created_date_caption">Created at:</string>
+    <string name="due_date_caption">Due at:</string>
 </resources>
