@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat
 
 class TaskAdapter(
     private val context: Context,
-    private val dataset: MutableList<Task>
+    private val dataset: List<Task>
 ): RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
     private val simpleDateFormat: SimpleDateFormat = SimpleDateFormat("yyyy/MM/dd")
 
@@ -35,9 +35,9 @@ class TaskAdapter(
         val task = dataset[position]
         holder.titleTextView.text = task.title
         holder.descriptionTextView.text = task.description
-        holder.createdDateTextView.text = simpleDateFormat.format(task.createDate)
-        holder.dueDateTextView.text = simpleDateFormat.format(task.dueDate)
-        holder.locationTextView.text = "${task.location.longitude} | ${task.location.altitude}"
+        holder.createdDateTextView.text = task.createDate
+        holder.dueDateTextView.text = task.dueDate
+        holder.locationTextView.text = task.location
     }
 
     override fun getItemCount(): Int {
